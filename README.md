@@ -9,11 +9,11 @@ In this example, a backup of both home and sysroot will be shown. The resulting 
 
 1. Ensure that storage permission is granted:
 
-$ termux-setup-storage
+ $ termux-setup-storage
 
 2. Backing up files:
 
-$ tar -zcf /sdcard/termux-backup.tar.gz -C /data/data/com.termux/files ./home ./usr
+ $ tar -zcf /sdcard/termux-backup.tar.gz -C /data/data/com.termux/files ./home ./usr
 
 Backup should be finished without any error. There shouldn't be any permission denials unless the user abused root permissions. If you got some warnings about socket files, ignore them.
 ```
@@ -46,3 +46,39 @@ never store your backups in Termux private directories. Their paths may look lik
 
 Once you clear Termux data from settings, these directories are erased too.
 ```
+
+# Using supplied scripts
+```
+These scripts backup and restore scripts will not backup, restore or in any other way touch your home directory.
+```
+
+## Using termux-backup
+```
+Simple backup with auto compression:
+
+$ termux-backup /sdcard/backup.tar.xz
+$ termux-backup - | gpg --symmetric --output /sdcard/backup.tar.gpg
+
+Content written to stdout is not compressed.
+```
+
+## Using termux-restore
+```
+Warning: restore procedure will destroy any previous data stored in $PREFIX. Script will perform a complete rollback to state state exactly as in backup archive.
+
+Restoring backup is also simple:
+$ termux-restore /sdcard/backup.tar.xz
+
+Once finished, restart Termux application.
+
+The utility termux-restore is able to
+read backup data from standard input. You
+can use this for reading content supplied
+by other tool. Backup contents supplied
+to stdin must not be compressed. See
+below example for restoring from
+encrypted, compressed backup:
+$ export GPG_TTY=$(tty)
+gpg --decrypt /sdcard/backup.tar.gz.gpg | gunzip | termux-restore -
+
+Please note that if restore procedure will be terminated before finish, your environment will be corrupted.
