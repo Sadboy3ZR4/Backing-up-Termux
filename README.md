@@ -1,4 +1,4 @@
-### Backing-up-Termux
+## Backing-up-Termux
 ```bash
 This page shows an example of backing up your Termux installation. Instructions listed there cover basic usage of archiving utility "tar" as well as show which files should be archived. It is highly recommended to understand what the listed commands do before copy-pasting them. Misunderstanding the purpose of each step may irrecoverably damage your data. If that happened to you - do not complain.
 ```
@@ -33,9 +33,8 @@ Here will be assumed that you have backed up both home and usr directory into sa
 Now close Termux with the "exit" button from notification and open it again.
 
 
-## Warning: never store your backups in Termux private directories. Their paths may look like:
-```
-• /data/data/com.termux                  - private Termux directory on internal storage
+## Warning never store your backups in Termux private directories. Their paths may look like
+```• /data/data/com.termux                  - private Termux directory on internal storage
 
 • /sdcard/Android/data/com.termux        - private Termux directory on shared storage
 
