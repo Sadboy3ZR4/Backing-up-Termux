@@ -31,10 +31,12 @@ Here will be assumed that you have backed up both home and usr directory into sa
  $ tar -zxf /sdcard/termux-backup.tar.gz -C /data/data/com.termux/files --recursive-unlink --preserve-permissions
 
 Now close Termux with the "exit" button from notification and open it again.
+```
 
-
-## Warning never store your backups in Termux private directories. Their paths may look like
-```• /data/data/com.termux                  - private Termux directory on internal storage
+## Warning⚠️
+```
+never store your backups in Termux private directories. Their paths may look like:
+• /data/data/com.termux                  - private Termux directory on internal storage
 
 • /sdcard/Android/data/com.termux        - private Termux directory on shared storage
 
