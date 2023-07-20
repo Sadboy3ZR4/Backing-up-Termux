@@ -71,14 +71,9 @@ $ termux-restore /sdcard/backup.tar.xz
 
 Once finished, restart Termux application.
 
-The utility termux-restore is able to
-read backup data from standard input. You
-can use this for reading content supplied
-by other tool. Backup contents supplied
-to stdin must not be compressed. See
-below example for restoring from
-encrypted, compressed backup:
+compressed backup:
 $ export GPG_TTY=$(tty)
-gpg --decrypt /sdcard/backup.tar.gz.gpg | gunzip | termux-restore -
+gpg --decrypt /sdcard/backup.tar.gz.gpg | gunzip | termux-restore
+```
 
-Please note that if restore procedure will be terminated before finish, your environment will be corrupted.
+## .[👉 SOURCE 👈](https://wiki.termux.com/wiki/Backing_up_Termux).
